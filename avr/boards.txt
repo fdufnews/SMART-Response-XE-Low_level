@@ -1,0 +1,31 @@
+
+menu.cpu=Processor
+
+##############################################################
+#############    Smart Response XE Optiboot   ################
+##############################################################
+
+smartxeo.name=Smart Response XE Optiboot
+
+smartxeo.upload.tool=avrdude
+smartxeo.upload.protocol=arduino
+smartxeo.upload.maximum_size=130048
+smartxeo.upload.maximum_data_size=16384
+smartxeo.upload.speed=115200
+
+smartxeo.bootloader.tool=avrdude
+smartxeo.bootloader.low_fuses=0xF7
+smartxeo.bootloader.high_fuses=0xD6
+smartxeo.bootloader.extended_fuses=0xF4
+smartxeo.bootloader.unlock_bits=0x3F
+smartxeo.bootloader.lock_bits=0x0F
+smartxeo.bootloader.file=optiboot_atmega128rfa1.hex
+#make atmega128rfa1 AVR_FREQ=16000000L UART=0 BAUD_RATE=115200 LED=B5 LED_START_FLASHES=0
+
+smartxeo.build.mcu=atmega128rfa1
+smartxeo.build.f_cpu=16000000L
+smartxeo.build.board=SMART_RESPONSE_XE_O
+smartxeo.build.core=arduino:arduino
+smartxeo.build.variant=smartxe
+
+
