@@ -24,11 +24,6 @@ sketchbook
     |
     | --A_Project
     | --B_Project
-    | --libraries
-    |     |
-    |     | -- A_library
-    |     |
-    |     | -- Z_library
     |
     | --hardware
     |     |
@@ -41,6 +36,12 @@ sketchbook
     |                       |         | pins_arduino.h
     |                       | board.txt
     |                       | platform.txt
+    |
+    | --libraries
+    |     |
+    |     | -- A_library
+    |     |
+    |     | -- Z_library
     |
     | --Z_Project
     
