@@ -21,32 +21,32 @@ If you select this board in the board manager, the hello_world example will be d
 
 The sketchbook directory tree shall look somethings like this
 
-sketchbook
-
+```text
+sketchbook\
     |
-    | --A_Project
-    | --B_Project
+    |--A_Project\
+    |--B_Project\
     |
-    | --hardware
+    |--hardware\
     |     |
-    |     | -- SMART-Response-XE-Low_level
-    |                   | --avr
-    |                   |   | --bootloaders
+    |     |-- SMART-Response-XE-Low_level\
+    |                   |--avr\
+    |                   |   |--bootloaders\
     |                   |   |     | optiboot_atmega128rfa1.hex
     |                   |   |
-    |                   |   | --libraries
-    |                   |   |     | -- SmartResponseXE
-    |                   |   |             | --examples
-    |                   |   |             |     | -- hello_world
-    |                   |   |             |             | -- hello_world.ino
+    |                   |   |--libraries\
+    |                   |   |     |-- SmartResponseXE\
+    |                   |   |             |--examples\
+    |                   |   |             |     |-- hello_world\
+    |                   |   |             |             | hello_world.ino
     |                   |   |             |
     |                   |   |             | LICENSE.md
     |                   |   |             | README.md
     |                   |   |             | SmartResponseXE.cpp
     |                   |   |             | SmartResponseXE.h
     |                   |   |
-    |                   |   | --variants
-    |                   |   |    | --smartxe
+    |                   |   |--variants\
+    |                   |   |    |--smartxe\
     |                   |   |         | pins_arduino.h
     |                   |   |
     |                   |   | board.txt
@@ -55,14 +55,14 @@ sketchbook
     |                   | LICENSE.md
     |                   | README.md
     |
-    | --libraries
+    |--libraries\
     |     |
-    |     | -- A_library
+    |     |-- A_library\
     |     |
-    |     | -- Z_library
+    |     |-- Z_library\
     |
-    | --Z_Project
-    
+    |--Z_Project\
+``` 
 
 ## Avant-propos
 
