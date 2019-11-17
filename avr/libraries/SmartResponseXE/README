@@ -1,0 +1,22 @@
+Larry's SMART Response XE support library
+
+Features:
+--------
+1) LCD initialization (4-gray levels) and support to draw 4 sizes of characters and outline+filled rectangles
+2) Functions to erase/write/read the external 128K byte SPI FLASH memory
+3) Fast GPIO access with simplified pin numbering (e.g. PORTD bit3 = pin 0xD3)
+4) Scan the keyboard and return pressed keys translated with the shift/sym keys
+
+Installation:
+------------
+1) Download the library: https://github.com/bitbank2/SmartResponseXE/archive/master.zip
+2) (In the Arduino IDE) Sketch > Include Library > Add .ZIP Library > select the downloaded file > Open
+
+Getting Started:
+---------------
+The first thing to do is initialize and clear the LCD. The pin numbers for the SRXE are:
+  // CS, D/C, RESET
+  SRXEInit(0xe7, 0xd6, 0xa2); // initialize display
+Next, you can draw some text or rectangles. The color can be 0-3 (0=off, 3=fully on)
+  SRXEWriteString(0,120,"Hello World!", FONT_LARGE, 3, 0); // draw large black text at x=0,y=120, fg=3, bg=0
+  
