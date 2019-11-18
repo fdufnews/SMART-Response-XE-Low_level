@@ -49,6 +49,8 @@ const static uint8_t SCL = 15;
 #warning Compiling for SMART Response XE target
 const static uint8_t LED = 10;
 const static uint8_t BUZZER = 3;
+const static uint8_t POWER_BUTTON = 20;
+
 #else
 const static uint8_t LED = 34;
 const static uint8_t LED1 = 34;

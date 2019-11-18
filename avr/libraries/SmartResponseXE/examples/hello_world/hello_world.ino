@@ -18,7 +18,6 @@ unsigned long lastState;
 unsigned long lastKey;
 const unsigned long timeState=1000;
 const unsigned long timeKey=100;
-const int POWER_BUTTON=20;
 byte ledState=LOW;
 
 unsigned int counter = 0;

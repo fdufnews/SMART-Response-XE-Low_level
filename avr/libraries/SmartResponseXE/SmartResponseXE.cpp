@@ -21,14 +21,20 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
+
+// 18/11/2019 fdufnews modified keyboard map
+// enter (0x0D) on del key
+// DEL (0x08) shift + DEL
+// SYM + I = ;
+// SYM + Z = *
+// SYM + X = /
+// root = ESC
+//
 #include <Arduino.h>
 #include <avr/pgmspace.h>
 #include <avr/sleep.h>
 #include "SmartResponseXE.h"
 //#include <SPI.h>
-
-// The power button is connected to PD2 (RX1) and signals INT2
-#define POWER_BUTTON 0xd2
 
 // Mapping of keyboard to GPIO pins
 //static byte rowPins[ROWS] = {6,35,34,8,9,0};
@@ -72,9 +78,9 @@ typedef enum
 //           COL6  SK1| SK2| SK3| SK4| SK5| SK6| SK7| SK8| SK9| SK10
 byte OriginalKeys[] = {'1','2','3','4','5','6','7','8','9','0',
                        'q','w','e','r','t','y','u','i','o','p',
-                       'a','s','d','f','g','h','j','k','l',8,
+                       'a','s','d','f','g','h','j','k','l',0xd, // enter (now del needs a shift)
                        0  ,'z','x','c','v','b','n',0x5,0,0x4, // 5 = down, 4 = up
-                       0  ,0xd,  0,  0,' ',',','.','m',  2,  3, // 2 = left, 3 = right
+                       0  ,0xd,  0x1b,  0,' ',',','.','m',  2,  3, // 2 = left, 3 = right, root = ESC
                        0xf0,0xf1,0xf2,0xf3,0xf4,0xf5,0xf6,0xf7,0xf8,0xf9};
 byte ShiftedKeys[] =  {'1','2','3','4','5','6','7','8','9','0',
                        'Q','W','E','R','T','Y','U','I','O','P',
@@ -83,9 +89,9 @@ byte ShiftedKeys[] =  {'1','2','3','4','5','6','7','8','9','0',
                        0  ,0xd,  0,  0,'_',',','.','M',  2,  3,
                        0xf0,0xf1,0xf2,0xf3,0xf4,0xf5,0xf6,0xf7,0xf8,0xf9};
 byte SymKeys[] =       {'!','2','3','$','%','6','\'','\"','(',')',
-                       'q','w','e','r','t','y','u','i','[',']',
+                       'q','w','e','r','t','y','u',';','[',']', // i = ;
                        '=','+','-','f','g','h','j',':','?',8,
-                        0 ,'z','x','c','v','b','n',0x5,0,0x4,
+                        0 ,'*','/','c','v','b','n',0x5,0,0x4, // z = *, x = /
                         0 ,0xd, 0 , 0 ,0x1,'<','>','m', 2, 3, // 1 = menu
                        0xf0,0xf1,0xf2,0xf3,0xf4,0xf5,0xf6,0xf7,0xf8,0xf9};
 
