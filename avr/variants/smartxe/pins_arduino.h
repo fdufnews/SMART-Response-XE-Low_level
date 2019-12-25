@@ -24,7 +24,8 @@
 
 /*
 	This version of pins_arduino.h is for the SMART Response XE
-	fdufnews 16/11/2019
+	fdufnews 2019/11/16 creation
+	fdufnews 2019/12/2 added allocation of SRXE specific I/Os
 	
 */
 
@@ -38,33 +39,52 @@
 #define analogInputToDigitalPin(p)  ((p < 8) ? (p) + 26 : -1)
 #define digitalPinHasPWM(p)         ((p) == 3 ||(p) == 4 ||(p) == 5 ||(p) == 8 ||(p) == 9 ||(p) == 19 ||(p) == 34 || (p) == 35)
 
-const static uint8_t SS   = 10;
-const static uint8_t MOSI = 11;
-const static uint8_t MISO = 12;
-const static uint8_t SCK  = 13;
 
-const static uint8_t SDA = 14;
-const static uint8_t SCL = 15;
-#ifdef ARDUINO_SMART_RESPONSE_XE_O
-#warning Compiling for SMART Response XE target
+// SPI interface
+#define PIN_SPI_SS    (10)
+#define PIN_SPI_MOSI  (11)
+#define PIN_SPI_MISO  (12)
+#define PIN_SPI_SCK   (13)
+const static uint8_t SS   = PIN_SPI_SS;
+const static uint8_t MOSI = PIN_SPI_MOSI;
+const static uint8_t MISO = PIN_SPI_MISO;
+const static uint8_t SCK  = PIN_SPI_SCK;
+
+// Signals for SPI devices
+const static uint8_t FLASH_CS = 21;
+const static uint8_t LCD_DC = 24;
+const static uint8_t LCD_CS = 7;
+const static uint8_t LCD_RST = 18;
+
+// I2C interface
+#define PIN_WIRE_SDA    (14)
+#define PIN_WIRE_SCL    (15)
+const static uint8_t SDA = PIN_WIRE_SDA;
+const static uint8_t SCL = PIN_WIRE_SCL;
+
+// Dedicated I/O
 const static uint8_t LED = 10;
 const static uint8_t BUZZER = 3;
 const static uint8_t POWER_BUTTON = 20;
+const static uint8_t VBATT = 26;
 
-#else
-const static uint8_t LED = 34;
-const static uint8_t LED1 = 34;
-const static uint8_t LED2 = 35;
-#endif
 
-const static uint8_t A0 = 26;
-const static uint8_t A1 = 27;
-const static uint8_t A2 = 28;
-const static uint8_t A3 = 29;
-const static uint8_t A4 = 30;
-const static uint8_t A5 = 31;
-const static uint8_t A6 = 32;
-const static uint8_t A7 = 33;
+#define PIN_A0   (26)
+#define PIN_A1   (27)
+#define PIN_A2   (28)
+#define PIN_A3   (29)
+#define PIN_A4   (30)
+#define PIN_A5   (31)
+#define PIN_A6   (32)
+#define PIN_A7   (33)
+const static uint8_t A0 = PIN_A0;
+const static uint8_t A1 = PIN_A1;
+const static uint8_t A2 = PIN_A2;
+const static uint8_t A3 = PIN_A3;
+const static uint8_t A4 = PIN_A4;
+const static uint8_t A5 = PIN_A5;
+const static uint8_t A6 = PIN_A6;
+const static uint8_t A7 = PIN_A7;
 
 // A majority of the pins are NOT PCINTs, SO BE WARNED (i.e. you cannot use them as receive pins)
 // Only pins available for RECEIVE (TRANSMIT can be on any pin):

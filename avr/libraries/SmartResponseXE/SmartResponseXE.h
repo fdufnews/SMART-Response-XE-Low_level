@@ -21,6 +21,13 @@
 #define LCD_WIDTH 384
 #define LCD_HEIGHT 136
 
+// keyboard special keys
+#define KEY_MENU 1
+#define KEY_LEFT 2
+#define KEY_RIGHT 3
+#define KEY_UP 4
+#define KEY_DOWN 5
+
 //
 // Simplified pin numbering scheme uses a hex number to specify the port number
 // and bit. Top 4 bits = port (B/D/E/F/G), bottom 3 bits specify the bit of the port
@@ -60,6 +67,17 @@ void SRXESetPosition(int x, int y, int cx, int cy);
 // Length can be anything from 1 to 17408 (whole display)
 //
 void SRXEWriteDataBlock(unsigned char *ucBuf, int iLen);
+//
+//  Set Scroll Area
+// inputs:
+// TA: top fixed area
+// SA: scroll area
+// BA: bottom fixed area
+// TA + SA + BA = 160
+//
+//  fdufnews 12/2019
+//
+void SRXEScrollArea(int TA, int SA, int BA);
 //
 // Scroll the screen N lines vertically (positive or negative)
 // The value given represents a delta which affects the current scroll offset
