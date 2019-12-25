@@ -119,6 +119,7 @@ void testText(void) {
   char* myString = {"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!?"};
   uint8_t line;
   uint8_t nbLine;
+  
   for (uint8_t font = 0; font < 4; font++) {
     uint8_t inc = (font & 2) ? 16 : 8; // line increment
     SRXEFill(0); // clear screen
@@ -152,6 +153,36 @@ void testText(void) {
   snprintf(buf, sizeof(buf) - 1, "%lu us", timeItTook[3]);
   SRXEWriteString(150, 80, buf, FONT_MEDIUM, 3, 0);
   while (SRXEGetKey() == 0);
+}
+
+// test scroll
+// fill screen with text
+// set scrolling area
+// scroll part of the screen
+//
+void testScroll(void){
+  int lineNum;
+  char* myString = {"abcdefghijklmnopqrstuvwxyz"};
+  char* string2={"  That's all  "};
+
+  SRXEFill(0); // clear screen
+  // fill screen with text
+  for(lineNum=0; lineNum<17; lineNum++){
+    snprintf(buf, sizeof(buf) - 1, "%u", lineNum);
+    SRXEWriteString(0, lineNum*8, buf, FONT_NORMAL, 3, 0);
+    SRXEWriteString(27, lineNum*8, myString, FONT_NORMAL, 3, 0);
+  }
+  delay(3000);
+  // scroll text
+  SRXEScrollArea(0,128,32); // set 16 text lines on top and 1 fixed at bottom
+  for(lineNum=0; lineNum<128; lineNum++){
+    SRXEScroll(1);
+    delay(lineNum%16==0?150:20);
+  }
+  SRXEWriteString(0, 128, string2, FONT_NORMAL, 3, 0);
+  SRXEScrollArea(0,160,0); // restore default values
+  SRXEScrollReset();
+  delay(3000);
 }
 
 // initialize system
@@ -239,6 +270,13 @@ void loop() {
       // if key is t go for a screen text filling test
       if (key == 't') {
         testText();
+        initAppDisplay();
+        lastState = millis();
+        lastKey = lastState;
+      }
+      // test screen scroll
+      if (key=='s'){
+        testScroll();
         initAppDisplay();
         lastState = millis();
         lastKey = lastState;
