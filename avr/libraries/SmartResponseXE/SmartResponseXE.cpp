@@ -28,7 +28,7 @@
 // SYM + I      --> ;
 // SYM + Z      --> *
 // SYM + X      --> /
-// root         --> ESC
+// square root  --> ESC
 // 8/12/2019 fdufnews added function to define scroll area
 //
 #include <Arduino.h>
