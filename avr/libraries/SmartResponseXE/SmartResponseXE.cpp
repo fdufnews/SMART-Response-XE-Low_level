@@ -44,7 +44,7 @@ const uint8_t rowPins[ROWS] = {0xe6, 0xb7, 0xb6, 0xb5, 0xb4, 0xe0};
 const uint8_t colPins[COLS] = {0xe4, 0xf1, 0xf3, 0xe2, 0xe1, 0xd7, 0xa0, 0xa5, 0xd5, 0xd4};
 static byte bKeyMap[COLS]; // bits indicating pressed keys
 static byte bOldKeyMap[COLS]; // previous map to look for pressed/released keys
-static byte bColorToByte[4] = {0, 0x4a, 0x92, 0xff};
+static byte bColorToByte[4] = {0, 0x49, 0x92, 0xff};
 static byte iCSPin, iDCPin, iResetPin;
 
 static int iScrollOffset;
@@ -417,7 +417,7 @@ static void SRXESetMode(int iMode)
 
 
 // Write a block of pixel data to the LCD
-// Length can be anything from 1 to 504 (whole display)
+// Length can be anything from 1 to 17404 (whole display)
 void SRXEWriteDataBlock(unsigned char *ucBuf, int iLen)
 {
   int i;
@@ -548,6 +548,31 @@ void SRXESetPosition(int x, int y, int cx, int cy)
   SRXEWriteDataBlock(ucTemp, 4);
   SRXEWriteCommand(0x2c); // write RAM
 } /* SRXESetPosition() */
+
+
+//    SRXELoadBitmapRLE
+//  load a bitmap in the display RAM
+//  input
+//    x, y coordinate of top left in the display
+//    btmp array containing the bitmap compressed with RLE
+//
+void SRXELoadBitmapRLE(int x, int y, const uint8_t *btmp){
+  int width, height, index=0;
+  unsigned char length, value;
+
+  width = pgm_read_byte_near(btmp+index++) + (pgm_read_byte_near(btmp+index++) <<8);
+  height = pgm_read_byte_near(btmp+index++)  + (pgm_read_byte_near(btmp+index++) <<8);
+  SRXESetPosition(x, y, width, height);
+  mydigitalWrite(iCSPin, LOW);
+  while(length = pgm_read_byte_near(btmp+index++) ){
+    value = pgm_read_byte_near(btmp+index++) ;
+    for(unsigned char count=0; count<length; count++){
+      SPI_transfer(value);
+    }
+  }
+  mydigitalWrite(iCSPin, HIGH);
+}
+
 
 
 //

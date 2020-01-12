@@ -22,7 +22,10 @@ compiler.c.elf.flags=-w -Os -Wl,--gc-sections
 compiler.c.elf.cmd=avr-gcc
 compiler.S.flags=-c -g -x assembler-with-cpp
 compiler.cpp.cmd=avr-g++
-compiler.cpp.flags=-c -g -Os -w -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD
+#original compiler options
+#compiler.cpp.flags=-c -g -Os -w -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD
+# added listing
+compiler.cpp.flags=-c -g -Os -w -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD -Wa,-acdhl={source_file}.lst
 compiler.ar.cmd=avr-ar
 compiler.ar.flags=rcs
 compiler.objcopy.cmd=avr-objcopy

@@ -67,6 +67,9 @@ void SRXESetPosition(int x, int y, int cx, int cy);
 // Length can be anything from 1 to 17408 (whole display)
 //
 void SRXEWriteDataBlock(unsigned char *ucBuf, int iLen);
+
+void SRXELoadBitmapRLE(int x, int y, const uint8_t *btmp);
+
 //
 //  Set Scroll Area
 // inputs:
