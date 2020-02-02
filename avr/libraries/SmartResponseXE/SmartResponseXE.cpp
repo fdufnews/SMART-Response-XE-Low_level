@@ -527,6 +527,9 @@ static void SRXEWriteCommand(unsigned char c)
 //
 // Send commands to position the "cursor" to the given
 // row and column
+// Opens a window in the display RAM
+// the windows starts @ x, y and it is cx wide and cy tall
+// all the subsequent write cycles will be done in that window
 //
 void SRXESetPosition(int x, int y, int cx, int cy)
 {
