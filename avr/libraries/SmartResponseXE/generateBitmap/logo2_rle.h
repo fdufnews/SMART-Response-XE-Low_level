@@ -2,7 +2,7 @@
 
 #include <avr/pgmspace.h>
 
-const uint8_t bitmap_logo2_rle[384/3*136+4+1] PROGMEM ={
+const uint8_t bitmap_logo2_rle[] PROGMEM ={
 	0x80, 0x01, // image width=384
 	0x88, 0x00, // image height=136
 	0XFE,0x00,0XFE,0x00,0XFE,0x00,0X89,0x00,0X01,0x03,0X22,0xff,0X01,0xfc,0X5C,0x00,

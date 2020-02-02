@@ -7,7 +7,7 @@ import argparse
 
 #list defining the 4 colors for any of the 3 pixels
 # The color list is inverted comparing to the one in the SMART Response library
-# that's because "min" and "max" has a different meaning in the two applications
+# that's because "min" and "max" have a different meaning in the two applications
 color = [0xFF, 0x92, 0x49, 0x00]
 #list defining the mask to access the 3 pixels
 mask = [0xE0, 0x1C, 0x03]
@@ -33,7 +33,7 @@ fileout = open(outfilename,'w')
 fileout.write('// Original file {}\n\n#include <avr/pgmspace.h>\n\n'.format(infilename))
 # name the bitmap with the name of the output file
 name = outfilename.split('.')
-fileout.write('const uint8_t bitmap_{0}[{1}/3*{2}+4+1] PROGMEM ='.format(name[0], width, height))
+fileout.write('const uint8_t bitmap_{0}[] PROGMEM ='.format(name[0]))
 fileout.write('{\n\t')
 
 #put size of the picture as a header of the bitmap
