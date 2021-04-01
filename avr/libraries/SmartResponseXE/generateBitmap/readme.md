@@ -24,5 +24,5 @@ The only task of the software is reading the size of the image, initializing the
 
 The source image is made using GIMP
 1. Picture is converted to indexed palette mode with 4 colors.
-2. Picture is exported in RAW format (.data extension). The export generate 2 files one .data and one .data.pal one the second is of no use it can be discarded
-3. Using the script the .data file is converted to a .h file that can be included is the software.
+2. Picture is exported in RAW format (.data extension). The export generate 2 files one .data and one .data.pal. The second is of no use it can be discarded.
+3. Using the script the .data file is converted to a .h file that can be included in the software.
