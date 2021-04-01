@@ -9,6 +9,7 @@
 */
 
 #include <SmartResponseXE.h>
+#include "logo_rle.h"
 
 int TEXT_WIDTH = 384;
 int TEXT_HEIGHT = 136;
@@ -185,6 +186,33 @@ void testScroll(void){
   delay(3000);
 }
 
+//   host_splashscreen
+//  displays a greeting screen
+//
+void host_splashscreen(void) {
+  const int startHit = 138;
+  const int lengthArrow = 84;
+  const int startArrow = startHit + 132;
+  int pos = startArrow;
+  unsigned long pauseArrow = 500ul;
+  unsigned long lastTimeArrow = 0;
+  unsigned long currenTime = millis();
+
+  SRXELoadBitmapRLE(0, 0, bitmap_logo_rle);
+  SRXEWriteString(startHit, 110, "Hit a key         ", FONT_MEDIUM, 3, 1);
+  while (!SRXEGetKey()) {
+    currenTime = millis();
+    if (currenTime - lastTimeArrow >= pauseArrow) {
+      SRXEWriteString(pos, 110, " ", FONT_MEDIUM, 3, 1);
+      pos += 12;
+      if (pos > startHit + 120 + lengthArrow) pos = startArrow;
+      SRXEWriteString(pos, 110, ">", FONT_MEDIUM, 3, 1);
+      lastTimeArrow = currenTime;
+    }
+  };
+}
+
+
 // initialize system
 // display
 // blink the LED, generate some beep
@@ -192,6 +220,8 @@ void setup() {
   setBatStat(); // ADC setup
 
   SRXEInit(0xe7, 0xd6, 0xa2); // initialize and clear display // CS, D/C, RESET
+
+  host_splashscreen();  // displays the splashscreen
 
   initAppDisplay();
 

@@ -397,7 +397,7 @@ uint8_t SPI_transfer(volatile char data)
   SPDR = data;                    // Start the transmission
   /* trick from arduboy code
     The following NOP introduces a small delay that can prevent the wait
-    loop form iterating when running at the maximum speed. This gives
+    loop from iterating when running at the maximum speed. This gives
     about 10% more speed, even if it seems counter-intuitive. At lower
     speeds it is unnoticed.
   */
