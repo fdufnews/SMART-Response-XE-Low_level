@@ -67,6 +67,8 @@ void initAppDisplay(void) {
   // Draw a rectanle on each side of the screen
   SRXERectangle(0, 0, 17, 135, 0x1, 0x1); // (int x, int y, int cx, int cy, byte color, byte bFilled)
   SRXERectangle(110, 0, 17, 135, 0x1, 0x1);
+  SRXEVerticalLine(17,0,135,3);
+  SRXEVerticalLine(110,0,135,3);
 
   // Draw arrows pointing to the soft keys
   SRXEWriteString(0, 2,  "< A", FONT_LARGE, 3, 1);

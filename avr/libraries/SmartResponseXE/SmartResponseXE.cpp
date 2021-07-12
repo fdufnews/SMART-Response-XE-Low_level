@@ -647,7 +647,7 @@ void SRXEHorizontalLine(int x, int y, int length, byte color, int thickness) {
 
 
 void SRXEVerticalLine(int x, int y, int height, byte color) {
-  byte bTemp[128];
+  byte bTemp[136];
 
   SRXESetPosition(x * 3, y, 1, height );
   memset(bTemp, bColorToByte[color], height);
