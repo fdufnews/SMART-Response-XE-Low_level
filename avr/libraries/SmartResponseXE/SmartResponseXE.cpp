@@ -34,7 +34,6 @@
 #include <Arduino.h>
 #include <avr/pgmspace.h>
 #include <avr/sleep.h>
-#include <avr/power.h>
 #include "SmartResponseXE.h"
 //#include <SPI.h>
 
@@ -340,8 +339,6 @@ void SRXESleep(void)
   EIFR |= (1 << INTF2); //clear interrupt flag
   EIMSK |= (1 << INT2); //enabling interrupt flag on INT2
 
-  clock_prescale_set (clock_div_256);
-
   set_sleep_mode (SLEEP_MODE_PWR_DOWN);
   sleep_enable();
 
@@ -355,11 +352,7 @@ void SRXESleep(void)
   // as the processor executes the next instruction after
   // interrupts are turned on.
   sleep_cpu ();   // one cycle
-
-  clock_prescale_set (clock_div_1);
-
   SRXEPowerUp();
-  
 } /* SRXESleep() */
 
 
