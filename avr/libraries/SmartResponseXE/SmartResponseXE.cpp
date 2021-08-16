@@ -576,7 +576,17 @@ void SRXELoadBitmapRLE(int x, int y, const uint8_t *btmp){
   mydigitalWrite(iCSPin, HIGH);
 }
 
+// SRXEIncreaseVop
+//
+void SRXEIncreaseVop(void){
+  SRXEWriteCommand(0xc1);
+}
 
+// SRXEDecreaseVop
+//
+void SRXEDecreaseVop(void){
+  SRXEWriteCommand(0xc2);
+}
 
 //
 //  Set Scroll Area

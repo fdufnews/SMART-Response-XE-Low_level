@@ -70,6 +70,17 @@ void SRXEWriteDataBlock(unsigned char *ucBuf, int iLen);
 
 void SRXELoadBitmapRLE(int x, int y, const uint8_t *btmp);
 
+// SRXEIncreaseVop
+// increase Vop voltage, so increase contrast
+//
+void SRXEIncreaseVop(void);
+
+// SRXEDecreaseVop
+// decrease Vop voltage, so decrease contrast
+//
+void SRXEDecreaseVop(void);
+
+
 //
 //  Set Scroll Area
 // inputs:
